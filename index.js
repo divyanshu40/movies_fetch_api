@@ -12,20 +12,6 @@ app.listen(PORT, () => {
     console.log("This server is running");
 });
 
-const moviesData = fs.readFileSync("movies.json");
-const movies = JSON.parse(moviesData);
- 
-// api to seed  database
-app.get("/seed_data", async (req, res) => {
-    try {
-        movies.map((movieData) => {
-            new movie(movieData).save();
-        });
-        res.status(200).json({ message: "Database seeded successfully" });
-    } catch(error) {
-        res.status(500).json({ error: error.message});
-    }
-})
 
 // function to get all movies
 async function getAllMovies() {
