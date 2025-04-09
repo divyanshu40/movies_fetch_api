@@ -23,7 +23,7 @@ app.get("/seed_data", async (req, res) => {
         });
         res.status(200).json({ message: "Database seeded successfully" });
     } catch(error) {
-        throw error;
+        res.status(500).json({ error: error.message});
     }
 })
 
